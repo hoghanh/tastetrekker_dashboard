@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   CButton,
@@ -15,8 +15,22 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { auth, provider } from './config'
+import { signInWithPopup } from 'firebase/auth'
+import './style.scss'
 
 const Login = () => {
+  const [value, setValue] = useState('')
+  const handleClick = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setValue(data.user.email)
+      localStorage.setItem('email', data.user.email)
+    })
+  }
+
+  useEffect(() => {
+    setValue(localStorage.getItem('email'))
+  })
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -56,6 +70,21 @@ const Login = () => {
                         </CButton>
                       </CCol>
                     </CRow>
+                    {value ? (
+                      (window.location.href = '/#/dashboard')
+                    ) : (
+                      <div className="google-btn" onClick={handleClick}>
+                        <div className="google-icon-wrapper">
+                          <img
+                            className="google-icon"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                          />
+                        </div>
+                        <p className="btn-text">
+                          <b>Sign in with google</b>
+                        </p>
+                      </div>
+                    )}
                   </CForm>
                 </CCardBody>
               </CCard>

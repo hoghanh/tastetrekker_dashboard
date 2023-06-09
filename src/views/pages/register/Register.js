@@ -23,13 +23,13 @@ const Register = () => {
             <CCard className="mx-4">
               <CCardBody className="p-4">
                 <CForm>
-                  <h1>Register</h1>
-                  <p className="text-medium-emphasis">Create your account</p>
+                  <h1>Đăng kí</h1>
+                  <p className="text-medium-emphasis">Tạo tài khoản của bạn</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
-                    <CFormInput placeholder="Username" autoComplete="username" />
+                    <CFormInput placeholder="Tên người dùng" autoComplete="username" />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>@</CInputGroupText>
@@ -41,7 +41,7 @@ const Register = () => {
                     </CInputGroupText>
                     <CFormInput
                       type="password"
-                      placeholder="Password"
+                      placeholder="Mật khẩu"
                       autoComplete="new-password"
                     />
                   </CInputGroup>
@@ -51,12 +51,12 @@ const Register = () => {
                     </CInputGroupText>
                     <CFormInput
                       type="password"
-                      placeholder="Repeat password"
+                      placeholder="Nhập lại mật khẩu"
                       autoComplete="new-password"
                     />
                   </CInputGroup>
                   <div className="d-grid">
-                    <CButton color="primary">Create Account</CButton>
+                    <CButton color="primary">Tạo tài khoản</CButton>
                   </div>
                 </CForm>
               </CCardBody>

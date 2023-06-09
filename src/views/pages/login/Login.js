@@ -40,13 +40,13 @@ const Login = () => {
               <CCard className="p-4">
                 <CCardBody>
                   <CForm>
-                    <h1>Login</h1>
-                    <p className="text-medium-emphasis">Sign In to your account</p>
+                    <h1>Đăng nhập</h1>
+                    <p className="text-medium-emphasis">Đăng nhập tài khoản của bạn</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput placeholder="Tên người dùng" autoComplete="username" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -54,24 +54,24 @@ const Login = () => {
                       </CInputGroupText>
                       <CFormInput
                         type="password"
-                        placeholder="Password"
+                        placeholder="Mật khẩu"
                         autoComplete="current-password"
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
                         <CButton color="primary" className="px-4">
-                          Login
+                          Đăng nhập
                         </CButton>
                       </CCol>
                       <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
-                          Forgot password?
+                          Quên mật khẩu?
                         </CButton>
                       </CCol>
                     </CRow>
                     {value ? (
-                      (window.location.href = '/#/dashboard')
+                      (window.location.href = '/dashboard')
                     ) : (
                       <div className="google-btn" onClick={handleClick}>
                         <div className="google-icon-wrapper">
@@ -81,7 +81,7 @@ const Login = () => {
                           />
                         </div>
                         <p className="btn-text">
-                          <b>Sign in with google</b>
+                          <b> Đăng nhập với google</b>
                         </p>
                       </div>
                     )}
@@ -91,7 +91,7 @@ const Login = () => {
               <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
                   <div>
-                    <h2>Sign up</h2>
+                    <h2>Đăng ký</h2>
                     <img
                       src="images/logo.png"
                       className="img-fluid"
@@ -101,7 +101,7 @@ const Login = () => {
                     <br />
                     <Link to="/register">
                       <CButton color="danger" className="mt-3" active tabIndex={-1}>
-                        Register Now!
+                        Đăng ký ngay!
                       </CButton>
                     </Link>
                   </div>

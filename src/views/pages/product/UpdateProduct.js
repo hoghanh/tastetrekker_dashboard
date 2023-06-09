@@ -23,6 +23,7 @@ function UpdateProduct() {
   const [proDescription, setProDescription] = useState('')
   const [proQuantity, setProQuantity] = useState('')
   const [proPrice, setProPrice] = useState('')
+  const [proImage, setProImage] = useState('')
   const [cateId, setCateId] = useState('')
   const [categories, setCategories] = useState([])
   const { id } = useParams()
@@ -43,6 +44,10 @@ function UpdateProduct() {
     setProPrice(event.target.value)
   }
 
+  const imageHandle = (event) => {
+    setProImage(event.target.value)
+  }
+
   const cateIdHandle = (event) => {
     setCateId(event.target.value)
   }
@@ -54,15 +59,16 @@ function UpdateProduct() {
         url: `https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com/product/${id}`,
       })
         .then((response) => {
-          const data = response.data.data
+          const data = response.data.data[0]
           setProName(data.name)
           setProDescription(data.detail)
           setProQuantity(data.quantity)
           setProPrice(data.price)
-          setCateId(data.Category.cateid)
+          setCateId(data.cateid)
+          setProImage(data.mainimg)
         })
-        .catch((ERROR) => {
-          console.log(ERROR.resposne)
+        .catch((err) => {
+          console.log(err)
         })
 
       await axios({
@@ -205,9 +211,9 @@ function UpdateProduct() {
               <CButton type="submit" className="m-3" onClick={handleUpdate}>
                 Cập nhật sản phẩm
               </CButton>
-              <CButton className="m-3" color="danger" onClick={handleInactive}>
+              {/* <CButton className="m-3" color="danger" onClick={handleInactive}>
                 Vô hiệu sản phẩm
-              </CButton>
+              </CButton> */}
             </CForm>
           </CCardBody>
         </CCard>

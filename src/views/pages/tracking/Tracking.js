@@ -61,52 +61,72 @@ function Tracking() {
             </CPagination>
             {orders?.map((order) => (
               <CCard key={order.orderid} style={{ width: '100', margin: '20px' }}>
-                <CCardBody>
-                  <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
-                  <CCardText>
-                    <CTable striped>
-                      <CTableHead>
-                        <CTableRow>
-                          <CTableHeaderCell scope="col" style={{ width: '500px' }}>
-                            Tên sản phẩm
-                          </CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Hình ảnh</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Số lượng</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Đơn giá</CTableHeaderCell>
-                        </CTableRow>
-                      </CTableHead>
-                      <CTableBody>
-                        {order.OrderDetails.map((orderDetail) => (
-                          <CTableRow key={orderDetail.Product.productid}>
-                            <CTableDataCell scope="row">{orderDetail.Product.name}</CTableDataCell>
-                            <CTableDataCell>
-                              <CCardImage
-                                orientation="top"
-                                src={orderDetail.Product.mainimg}
-                                style={{ width: '50px' }}
-                              />
-                            </CTableDataCell>
-                            <CTableDataCell>{orderDetail.quantity}</CTableDataCell>
-                            <CTableDataCell>{orderDetail.Product.price}</CTableDataCell>
+                {order.status !== 'cart' && (
+                  <CCardBody>
+                    <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
+                    <CCardText>
+                      <CTable striped>
+                        <CTableHead>
+                          <CTableRow>
+                            <CTableHeaderCell scope="col" style={{ width: '500px' }}>
+                              Tên sản phẩm
+                            </CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Hình ảnh</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Số lượng</CTableHeaderCell>
+                            <CTableHeaderCell scope="col">Đơn giá</CTableHeaderCell>
                           </CTableRow>
-                        ))}
-                      </CTableBody>
-                    </CTable>
-                  </CCardText>
-                </CCardBody>
-                <CCardFooter
-                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-                >
-                  <CCardText>Tổng tiền: {order.totalmoney}</CCardText>
-                  <CDropdown>
-                    <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem href="#">Đã thanh toán</CDropdownItem>
-                      <CDropdownItem href="#">Thanh toán tiền mặt</CDropdownItem>
-                      <CDropdownItem href="#">Thành công</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CCardFooter>
+                        </CTableHead>
+                        <CTableBody>
+                          {order.OrderDetails.map((orderDetail) => (
+                            <CTableRow key={orderDetail.Product.productid}>
+                              <CTableDataCell scope="row">
+                                {orderDetail.Product.name}
+                              </CTableDataCell>
+                              <CTableDataCell>
+                                <CCardImage
+                                  orientation="top"
+                                  src={orderDetail.Product.mainimg}
+                                  style={{ width: '50px' }}
+                                />
+                              </CTableDataCell>
+                              <CTableDataCell>{orderDetail.quantity}</CTableDataCell>
+                              <CTableDataCell>{orderDetail.Product.price}</CTableDataCell>
+                            </CTableRow>
+                          ))}
+                        </CTableBody>
+                      </CTable>
+                    </CCardText>
+                    <CCardFooter
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <CCardText>Tổng tiền: {order.totalmoney}</CCardText>
+                      <CCardText>
+                        Trạng thái:{' '}
+                        {order.status === 'Pending'
+                          ? 'Đang chờ'
+                          : order.status === 'pending_cast,'
+                          ? 'Thanh toán tiền mặt'
+                          : order.status === 'banking'
+                          ? 'Đã thanh toán'
+                          : order.status === 'Done'
+                          ? 'Đã nhận'
+                          : 'Đã huỷ'}
+                      </CCardText>
+                      <CDropdown>
+                        <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
+                        <CDropdownMenu>
+                          <CDropdownItem href="#">Đã thanh toán</CDropdownItem>
+                          <CDropdownItem href="#">Thanh toán tiền mặt</CDropdownItem>
+                          <CDropdownItem href="#">Thành công</CDropdownItem>
+                        </CDropdownMenu>
+                      </CDropdown>
+                    </CCardFooter>
+                  </CCardBody>
+                )}
               </CCard>
             ))}
           </CCardBody>

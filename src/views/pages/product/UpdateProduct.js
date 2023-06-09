@@ -14,7 +14,6 @@ import {
   CFormSelect,
   CInputGroup,
   CInputGroupText,
-  CFormSwitch,
   CRow,
 } from '@coreui/react'
 import { useParams } from 'react-router-dom'
@@ -54,8 +53,8 @@ function UpdateProduct() {
         method: 'get',
         url: `https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com/product/${id}`,
       })
-        .then((resposne) => {
-          const data = resposne.data.data
+        .then((response) => {
+          const data = response.data.data
           setProName(data.name)
           setProDescription(data.detail)
           setProQuantity(data.quantity)

@@ -58,11 +58,11 @@ const Dashboard = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
   const progressExample = [
-    { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
-    { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
-    { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
-    { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
-    { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
+    { title: 'Ghé thăm', value: '29.703 Users', percent: 40, color: 'success' },
+    { title: 'Duy nhất', value: '24.093 Users', percent: 20, color: 'info' },
+    { title: 'Lượt xem trang', value: '78.706 Views', percent: 60, color: 'warning' },
+    { title: 'Người dùng mới', value: '22.123 Users', percent: 80, color: 'danger' },
+    { title: 'Tỷ lệ thoát', value: 'Average Rate', percent: 40.15, color: 'primary' },
   ]
 
   const progressGroupExample1 = [
@@ -186,16 +186,16 @@ const Dashboard = () => {
           <CRow>
             <CCol sm={5}>
               <h4 id="traffic" className="card-title mb-0">
-                Traffic
+                Lưu lượng truy cập
               </h4>
-              <div className="small text-medium-emphasis">January - July 2021</div>
+              <div className="small text-medium-emphasis">Tháng 1 - Tháng 12 2022</div>
             </CCol>
             <CCol sm={7} className="d-none d-md-block">
               <CButton color="primary" className="float-end">
                 <CIcon icon={cilCloudDownload} />
               </CButton>
               <CButtonGroup className="float-end me-3">
-                {['Day', 'Month', 'Year'].map((value) => (
+                {['Ngày', 'Tháng', 'Năm'].map((value) => (
                   <CButton
                     color="outline-secondary"
                     key={value}
@@ -211,7 +211,20 @@ const Dashboard = () => {
           <CChartLine
             style={{ height: '300px', marginTop: '40px' }}
             data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: [
+                'Tháng một',
+                'Tháng hai',
+                'Tháng ba',
+                'Tháng tư',
+                'Tháng năm',
+                'Tháng sáu',
+                'Tháng bảy',
+                'Tháng tám',
+                'Tháng chín',
+                'Tháng mười',
+                'Tháng mười một',
+                'Tháng mười hai',
+              ],
               datasets: [
                 {
                   label: 'My First dataset',
@@ -220,6 +233,11 @@ const Dashboard = () => {
                   pointHoverBackgroundColor: getStyle('--cui-info'),
                   borderWidth: 2,
                   data: [
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
                     random(50, 200),
                     random(50, 200),
                     random(50, 200),
@@ -244,6 +262,12 @@ const Dashboard = () => {
                     random(50, 200),
                     random(50, 200),
                     random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
+                    random(50, 200),
                   ],
                 },
                 {
@@ -253,7 +277,7 @@ const Dashboard = () => {
                   pointHoverBackgroundColor: getStyle('--cui-danger'),
                   borderWidth: 1,
                   borderDash: [8, 5],
-                  data: [65, 65, 65, 65, 65, 65, 65],
+                  data: [65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65],
                 },
               ],
             }}
@@ -313,20 +337,20 @@ const Dashboard = () => {
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>Traffic {' & '} Sales</CCardHeader>
+            <CCardHeader>Lưu lượng truy cập {' & '} Bán hàng</CCardHeader>
             <CCardBody>
               <CRow>
                 <CCol xs={12} md={6} xl={6}>
                   <CRow>
                     <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-medium-emphasis small">New Clients</div>
+                        <div className="text-medium-emphasis small">Khách hàng mới</div>
                         <div className="fs-5 fw-semibold">9,123</div>
                       </div>
                     </CCol>
                     <CCol sm={6}>
                       <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small">Recurring Clients</div>
+                        <div className="text-medium-emphasis small">Khách hàng định kỳ</div>
                         <div className="fs-5 fw-semibold">22,643</div>
                       </div>
                     </CCol>
@@ -405,11 +429,13 @@ const Dashboard = () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>User</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
-                    <CTableHeaderCell>Usage</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
-                    <CTableHeaderCell>Activity</CTableHeaderCell>
+                    <CTableHeaderCell>Người dùng</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Quốc gia</CTableHeaderCell>
+                    <CTableHeaderCell>Sử dụng</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      Phương thức thanh toán
+                    </CTableHeaderCell>
+                    <CTableHeaderCell>Hoạt động</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -421,7 +447,7 @@ const Dashboard = () => {
                       <CTableDataCell>
                         <div>{item.user.name}</div>
                         <div className="small text-medium-emphasis">
-                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
+                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Đã đăng kí:{' '}
                           {item.user.registered}
                         </div>
                       </CTableDataCell>
@@ -443,7 +469,7 @@ const Dashboard = () => {
                         <CIcon size="xl" icon={item.payment.icon} />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-medium-emphasis">Last login</div>
+                        <div className="small text-medium-emphasis">Lần cuối đăng nhập</div>
                         <strong>{item.activity}</strong>
                       </CTableDataCell>
                     </CTableRow>

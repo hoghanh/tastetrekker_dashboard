@@ -16,7 +16,6 @@ import {
   CTableRow,
   CButton,
   CImage,
-  CFormSwitch,
 } from '@coreui/react'
 
 function Product() {
@@ -41,7 +40,7 @@ function Product() {
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            <strong>Product List</strong>
+            <strong>Danh sách sản phẩm</strong>
           </CCardHeader>
           <CCardBody>
             <CTable striped>

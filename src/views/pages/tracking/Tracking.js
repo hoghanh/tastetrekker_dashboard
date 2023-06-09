@@ -30,18 +30,39 @@ function Tracking() {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
+    fetchOrders()
+  }, [])
+
+  function handleStatus(id, status) {
     axios({
-      method: 'get',
-      url: `https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com/order/`,
+      method: 'put',
+      url: `https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com/order/status/${id}`,
+      data: {
+        tracking: status,
+      },
     })
+      .then((response) => {
+        console.log(id, status)
+        alert('Cập nhật thành công')
+        fetchOrders()
+      })
+      .catch((error) => {
+        console.log(error)
+        alert('Đã xảy ra lỗi, vui lòng thử lại')
+      })
+  }
+
+  const fetchOrders = async () => {
+    axios
+      .get('https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com/order/')
       .then((response) => {
         const data = response.data.data
         setOrders(data)
       })
-      .catch((ERROR) => {
-        console.log(ERROR.resposne)
+      .catch((error) => {
+        console.log(error.response)
       })
-  }, [])
+  }
 
   return (
     <CRow>
@@ -108,20 +129,28 @@ function Tracking() {
                         Trạng thái:{' '}
                         {order.status === 'Pending'
                           ? 'Đang chờ'
-                          : order.status === 'pending_cast,'
+                          : order.status === 'pending_cast'
                           ? 'Thanh toán tiền mặt'
                           : order.status === 'banking'
                           ? 'Đã thanh toán'
-                          : order.status === 'Done'
+                          : order.status === 'done'
                           ? 'Đã nhận'
                           : 'Đã huỷ'}
                       </CCardText>
                       <CDropdown>
                         <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
                         <CDropdownMenu>
-                          <CDropdownItem href="#">Đã thanh toán</CDropdownItem>
-                          <CDropdownItem href="#">Thanh toán tiền mặt</CDropdownItem>
-                          <CDropdownItem href="#">Thành công</CDropdownItem>
+                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'banking')}>
+                            Đã thanh toán
+                          </CDropdownItem>
+                          <CDropdownItem
+                            onClick={() => handleStatus(order.orderid, 'pending_cast')}
+                          >
+                            Thanh toán tiền mặt
+                          </CDropdownItem>
+                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'done')}>
+                            Thành công
+                          </CDropdownItem>
                         </CDropdownMenu>
                       </CDropdown>
                     </CCardFooter>

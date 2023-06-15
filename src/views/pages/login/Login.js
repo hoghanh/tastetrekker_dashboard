@@ -18,14 +18,43 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { auth, provider } from './config'
 import { signInWithPopup } from 'firebase/auth'
 import './style.scss'
+import axios from 'axios'
 
 const Login = () => {
   const [value, setValue] = useState('')
+  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
+
+  const passwordHandle = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const usernameHandle = (event) => {
+    setUsername(event.target.value)
+  }
   const handleClick = () => {
     signInWithPopup(auth, provider).then((data) => {
       setValue(data.user.email)
       localStorage.setItem('email', data.user.email)
     })
+  }
+
+  function login() {
+    axios({
+      method: 'post',
+      url: 'https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com/saler/login',
+      data: {
+        username: username,
+        password: password,
+      },
+    })
+      .then((response) => {
+        window.location.href = '/#/'
+      })
+      .catch((error) => {
+        console.log(error)
+        alert('Vui lòng kiểm tra lại tài khoản')
+      })
   }
 
   useEffect(() => {
@@ -46,7 +75,11 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Tên người dùng" autoComplete="username" />
+                      <CFormInput
+                        placeholder="Tên người dùng"
+                        autoComplete="username"
+                        onChange={usernameHandle}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -56,11 +89,12 @@ const Login = () => {
                         type="password"
                         placeholder="Mật khẩu"
                         autoComplete="current-password"
+                        onChange={passwordHandle}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton color="primary" className="px-4" onClick={login}>
                           Đăng nhập
                         </CButton>
                       </CCol>

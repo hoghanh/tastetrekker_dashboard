@@ -75,8 +75,7 @@ function Tracking() {
             <CPagination className="justify-content-center" aria-label="Page navigation example">
               <CPaginationItem active>Tất cả</CPaginationItem>
               <CPaginationItem>Đang chờ</CPaginationItem>
-              <CPaginationItem>Thanh toán tiền mặt</CPaginationItem>
-              <CPaginationItem>Đã thanh toán</CPaginationItem>
+              <CPaginationItem>Đang giao</CPaginationItem>
               <CPaginationItem>Thành công</CPaginationItem>
               <CPaginationItem>Đã huỷ</CPaginationItem>
             </CPagination>
@@ -128,11 +127,9 @@ function Tracking() {
                       <CCardText>
                         Trạng thái:{' '}
                         {order.status === 'Pending'
+                          ? 'Đang giao'
+                          : order.status === 'checking'
                           ? 'Đang chờ'
-                          : order.status === 'pending_cast'
-                          ? 'Thanh toán tiền mặt'
-                          : order.status === 'banking'
-                          ? 'Đã thanh toán'
                           : order.status === 'done'
                           ? 'Đã nhận'
                           : 'Đã huỷ'}
@@ -140,13 +137,11 @@ function Tracking() {
                       <CDropdown>
                         <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
                         <CDropdownMenu>
-                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'banking')}>
-                            Đã thanh toán
+                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'Pending')}>
+                            Đang giao
                           </CDropdownItem>
-                          <CDropdownItem
-                            onClick={() => handleStatus(order.orderid, 'pending_cast')}
-                          >
-                            Thanh toán tiền mặt
+                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'cancel')}>
+                            Đã huỷ
                           </CDropdownItem>
                           <CDropdownItem onClick={() => handleStatus(order.orderid, 'done')}>
                             Thành công

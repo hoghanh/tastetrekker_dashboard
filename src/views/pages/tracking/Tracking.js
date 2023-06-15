@@ -28,10 +28,11 @@ import {
 
 function Tracking() {
   const [orders, setOrders] = useState([])
+  const [status, setStatus] = useState('all')
 
   useEffect(() => {
     fetchOrders()
-  }, [])
+  }, [status])
 
   function handleStatus(id, status) {
     axios({
@@ -73,86 +74,159 @@ function Tracking() {
           </CCardHeader>
           <CCardBody>
             <CPagination className="justify-content-center" aria-label="Page navigation example">
-              <CPaginationItem active>Tất cả</CPaginationItem>
-              <CPaginationItem>Đang chờ</CPaginationItem>
-              <CPaginationItem>Đang giao</CPaginationItem>
-              <CPaginationItem>Thành công</CPaginationItem>
-              <CPaginationItem>Đã huỷ</CPaginationItem>
+              <CPaginationItem onClick={() => setStatus('all')}>Tất cả</CPaginationItem>
+              <CPaginationItem onClick={() => setStatus('checking')}>Đang chờ</CPaginationItem>
+              <CPaginationItem onClick={() => setStatus('Pending')}>Đang giao</CPaginationItem>
+              <CPaginationItem onClick={() => setStatus('done')}>Thành công</CPaginationItem>
+              <CPaginationItem onClick={() => setStatus('cancel')}>Đã huỷ</CPaginationItem>
             </CPagination>
-            {orders?.map((order) => (
-              <CCard key={order.orderid} style={{ width: '100', margin: '20px' }}>
-                {order.status !== 'cart' && (
-                  <CCardBody>
-                    <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
-                    <CCardText>
-                      <CTable striped>
-                        <CTableHead>
-                          <CTableRow>
-                            <CTableHeaderCell scope="col" style={{ width: '500px' }}>
-                              Tên sản phẩm
-                            </CTableHeaderCell>
-                            <CTableHeaderCell scope="col">Hình ảnh</CTableHeaderCell>
-                            <CTableHeaderCell scope="col">Số lượng</CTableHeaderCell>
-                            <CTableHeaderCell scope="col">Đơn giá</CTableHeaderCell>
-                          </CTableRow>
-                        </CTableHead>
-                        <CTableBody>
-                          {order.OrderDetails.map((orderDetail) => (
-                            <CTableRow key={orderDetail.Product.productid}>
-                              <CTableDataCell scope="row">
-                                {orderDetail.Product.name}
-                              </CTableDataCell>
-                              <CTableDataCell>
-                                <CCardImage
-                                  orientation="top"
-                                  src={orderDetail.Product.mainimg}
-                                  style={{ width: '50px' }}
-                                />
-                              </CTableDataCell>
-                              <CTableDataCell>{orderDetail.quantity}</CTableDataCell>
-                              <CTableDataCell>{orderDetail.Product.price}</CTableDataCell>
-                            </CTableRow>
-                          ))}
-                        </CTableBody>
-                      </CTable>
-                    </CCardText>
-                    <CCardFooter
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <CCardText>Tổng tiền: {order.totalmoney}</CCardText>
-                      <CCardText>
-                        Trạng thái:{' '}
-                        {order.status === 'Pending'
-                          ? 'Đang giao'
-                          : order.status === 'checking'
-                          ? 'Đang chờ'
-                          : order.status === 'done'
-                          ? 'Đã nhận'
-                          : 'Đã huỷ'}
-                      </CCardText>
-                      <CDropdown>
-                        <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
-                        <CDropdownMenu>
-                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'Pending')}>
-                            Đang giao
-                          </CDropdownItem>
-                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'cancel')}>
-                            Đã huỷ
-                          </CDropdownItem>
-                          <CDropdownItem onClick={() => handleStatus(order.orderid, 'done')}>
-                            Thành công
-                          </CDropdownItem>
-                        </CDropdownMenu>
-                      </CDropdown>
-                    </CCardFooter>
-                  </CCardBody>
-                )}
-              </CCard>
-            ))}
+            {orders?.map((order) =>
+              status !== 'all'
+                ? order.status === status && (
+                    <CCard key={order.orderid} style={{ width: '100', margin: '20px' }}>
+                      <CCardBody>
+                        <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
+                        <CCardText>
+                          <CTable striped>
+                            <CTableHead>
+                              <CTableRow>
+                                <CTableHeaderCell scope="col" style={{ width: '500px' }}>
+                                  Tên sản phẩm
+                                </CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Hình ảnh</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Số lượng</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Đơn giá</CTableHeaderCell>
+                              </CTableRow>
+                            </CTableHead>
+                            <CTableBody>
+                              {order.OrderDetails.map((orderDetail) => (
+                                <CTableRow key={orderDetail.Product.productid}>
+                                  <CTableDataCell scope="row">
+                                    {orderDetail.Product.name}
+                                  </CTableDataCell>
+                                  <CTableDataCell>
+                                    <CCardImage
+                                      orientation="top"
+                                      src={orderDetail.Product.mainimg}
+                                      style={{ width: '50px' }}
+                                    />
+                                  </CTableDataCell>
+                                  <CTableDataCell>{orderDetail.quantity}</CTableDataCell>
+                                  <CTableDataCell>{orderDetail.Product.price}</CTableDataCell>
+                                </CTableRow>
+                              ))}
+                            </CTableBody>
+                          </CTable>
+                        </CCardText>
+                        <CCardFooter
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <CCardText>Tổng tiền: {order.totalmoney}</CCardText>
+                          <CCardText>
+                            Trạng thái:{' '}
+                            {order.status === 'Pending'
+                              ? 'Đang giao'
+                              : order.status === 'checking'
+                              ? 'Đang chờ'
+                              : order.status === 'done'
+                              ? 'Đã nhận'
+                              : 'Đã huỷ'}
+                          </CCardText>
+                          <CDropdown>
+                            <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
+                            <CDropdownMenu>
+                              <CDropdownItem onClick={() => handleStatus(order.orderid, 'Pending')}>
+                                Đang giao
+                              </CDropdownItem>
+                              <CDropdownItem onClick={() => handleStatus(order.orderid, 'cancel')}>
+                                Đã huỷ
+                              </CDropdownItem>
+                              <CDropdownItem onClick={() => handleStatus(order.orderid, 'done')}>
+                                Thành công
+                              </CDropdownItem>
+                            </CDropdownMenu>
+                          </CDropdown>
+                        </CCardFooter>
+                      </CCardBody>
+                    </CCard>
+                  )
+                : order.status !== 'cart' && (
+                    <CCard key={order.orderid} style={{ width: '100', margin: '20px' }}>
+                      <CCardBody>
+                        <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
+                        <CCardText>
+                          <CTable striped>
+                            <CTableHead>
+                              <CTableRow>
+                                <CTableHeaderCell scope="col" style={{ width: '500px' }}>
+                                  Tên sản phẩm
+                                </CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Hình ảnh</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Số lượng</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Đơn giá</CTableHeaderCell>
+                              </CTableRow>
+                            </CTableHead>
+                            <CTableBody>
+                              {order.OrderDetails.map((orderDetail) => (
+                                <CTableRow key={orderDetail.Product.productid}>
+                                  <CTableDataCell scope="row">
+                                    {orderDetail.Product.name}
+                                  </CTableDataCell>
+                                  <CTableDataCell>
+                                    <CCardImage
+                                      orientation="top"
+                                      src={orderDetail.Product.mainimg}
+                                      style={{ width: '50px' }}
+                                    />
+                                  </CTableDataCell>
+                                  <CTableDataCell>{orderDetail.quantity}</CTableDataCell>
+                                  <CTableDataCell>{orderDetail.Product.price}</CTableDataCell>
+                                </CTableRow>
+                              ))}
+                            </CTableBody>
+                          </CTable>
+                        </CCardText>
+                        <CCardFooter
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <CCardText>Tổng tiền: {order.totalmoney}</CCardText>
+                          <CCardText>
+                            Trạng thái:{' '}
+                            {order.status === 'Pending'
+                              ? 'Đang giao'
+                              : order.status === 'checking'
+                              ? 'Đang chờ'
+                              : order.status === 'done'
+                              ? 'Đã nhận'
+                              : 'Đã huỷ'}
+                          </CCardText>
+                          <CDropdown>
+                            <CDropdownToggle color="primary">Chuyển trạng thái</CDropdownToggle>
+                            <CDropdownMenu>
+                              <CDropdownItem onClick={() => handleStatus(order.orderid, 'Pending')}>
+                                Đang giao
+                              </CDropdownItem>
+                              <CDropdownItem onClick={() => handleStatus(order.orderid, 'cancel')}>
+                                Đã huỷ
+                              </CDropdownItem>
+                              <CDropdownItem onClick={() => handleStatus(order.orderid, 'done')}>
+                                Thành công
+                              </CDropdownItem>
+                            </CDropdownMenu>
+                          </CDropdown>
+                        </CCardFooter>
+                      </CCardBody>
+                    </CCard>
+                  ),
+            )}
           </CCardBody>
         </CCard>
       </CCol>

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tastetrekker_dashboard/static/css/main.168ade70.css",
-    "main.js": "/tastetrekker_dashboard/static/js/main.badd6d40.js",
+    "main.js": "/tastetrekker_dashboard/static/js/main.b0add7f4.js",
     "static/css/593.07865d41.chunk.css": "/tastetrekker_dashboard/static/css/593.07865d41.chunk.css",
     "static/js/593.0c32ca55.chunk.js": "/tastetrekker_dashboard/static/js/593.0c32ca55.chunk.js",
     "static/css/940.0332b75f.chunk.css": "/tastetrekker_dashboard/static/css/940.0332b75f.chunk.css",
@@ -9,7 +9,7 @@
     "static/js/9.01c83e66.chunk.js": "/tastetrekker_dashboard/static/js/9.01c83e66.chunk.js",
     "static/js/1.b34b5739.chunk.js": "/tastetrekker_dashboard/static/js/1.b34b5739.chunk.js",
     "static/js/188.93dc74ca.chunk.js": "/tastetrekker_dashboard/static/js/188.93dc74ca.chunk.js",
-    "static/js/299.43c664a6.chunk.js": "/tastetrekker_dashboard/static/js/299.43c664a6.chunk.js",
+    "static/js/299.cd1daa9e.chunk.js": "/tastetrekker_dashboard/static/js/299.cd1daa9e.chunk.js",
     "static/js/233.d9dc5909.chunk.js": "/tastetrekker_dashboard/static/js/233.d9dc5909.chunk.js",
     "static/js/121.9e4a260f.chunk.js": "/tastetrekker_dashboard/static/js/121.9e4a260f.chunk.js",
     "static/js/839.23c3e286.chunk.js": "/tastetrekker_dashboard/static/js/839.23c3e286.chunk.js",
@@ -31,7 +31,7 @@
     "static/media/6.jpg": "/tastetrekker_dashboard/static/media/6.edefb235566ed72a7429.jpg",
     "index.html": "/tastetrekker_dashboard/index.html",
     "main.168ade70.css.map": "/tastetrekker_dashboard/static/css/main.168ade70.css.map",
-    "main.badd6d40.js.map": "/tastetrekker_dashboard/static/js/main.badd6d40.js.map",
+    "main.b0add7f4.js.map": "/tastetrekker_dashboard/static/js/main.b0add7f4.js.map",
     "593.07865d41.chunk.css.map": "/tastetrekker_dashboard/static/css/593.07865d41.chunk.css.map",
     "593.0c32ca55.chunk.js.map": "/tastetrekker_dashboard/static/js/593.0c32ca55.chunk.js.map",
     "940.0332b75f.chunk.css.map": "/tastetrekker_dashboard/static/css/940.0332b75f.chunk.css.map",
@@ -39,7 +39,7 @@
     "9.01c83e66.chunk.js.map": "/tastetrekker_dashboard/static/js/9.01c83e66.chunk.js.map",
     "1.b34b5739.chunk.js.map": "/tastetrekker_dashboard/static/js/1.b34b5739.chunk.js.map",
     "188.93dc74ca.chunk.js.map": "/tastetrekker_dashboard/static/js/188.93dc74ca.chunk.js.map",
-    "299.43c664a6.chunk.js.map": "/tastetrekker_dashboard/static/js/299.43c664a6.chunk.js.map",
+    "299.cd1daa9e.chunk.js.map": "/tastetrekker_dashboard/static/js/299.cd1daa9e.chunk.js.map",
     "233.d9dc5909.chunk.js.map": "/tastetrekker_dashboard/static/js/233.d9dc5909.chunk.js.map",
     "121.9e4a260f.chunk.js.map": "/tastetrekker_dashboard/static/js/121.9e4a260f.chunk.js.map",
     "839.23c3e286.chunk.js.map": "/tastetrekker_dashboard/static/js/839.23c3e286.chunk.js.map",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.168ade70.css",
-    "static/js/main.badd6d40.js"
+    "static/js/main.b0add7f4.js"
   ]
 }

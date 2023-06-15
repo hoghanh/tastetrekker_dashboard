@@ -51,7 +51,7 @@ function Register() {
     })
       .then((response) => {
         alert('Đăng ký thành công')
-        window.location.href = '/#/'
+        window.location.href = '/#/dashboard'
       })
       .catch((error) => {
         console.log(error)

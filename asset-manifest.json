@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/tastetrekker_dashboard/static/css/main.168ade70.css",
-    "main.js": "/tastetrekker_dashboard/static/js/main.fa89a7a3.js",
+    "main.js": "/tastetrekker_dashboard/static/js/main.b88b8895.js",
     "static/css/593.07865d41.chunk.css": "/tastetrekker_dashboard/static/css/593.07865d41.chunk.css",
     "static/js/593.833504fe.chunk.js": "/tastetrekker_dashboard/static/js/593.833504fe.chunk.js",
     "static/css/940.0332b75f.chunk.css": "/tastetrekker_dashboard/static/css/940.0332b75f.chunk.css",
     "static/js/940.fbaa7445.chunk.js": "/tastetrekker_dashboard/static/js/940.fbaa7445.chunk.js",
-    "static/js/9.01c83e66.chunk.js": "/tastetrekker_dashboard/static/js/9.01c83e66.chunk.js",
+    "static/js/9.d5269bf2.chunk.js": "/tastetrekker_dashboard/static/js/9.d5269bf2.chunk.js",
     "static/js/1.b34b5739.chunk.js": "/tastetrekker_dashboard/static/js/1.b34b5739.chunk.js",
     "static/js/188.93dc74ca.chunk.js": "/tastetrekker_dashboard/static/js/188.93dc74ca.chunk.js",
     "static/js/299.cd1daa9e.chunk.js": "/tastetrekker_dashboard/static/js/299.cd1daa9e.chunk.js",
@@ -31,12 +31,12 @@
     "static/media/6.jpg": "/tastetrekker_dashboard/static/media/6.edefb235566ed72a7429.jpg",
     "index.html": "/tastetrekker_dashboard/index.html",
     "main.168ade70.css.map": "/tastetrekker_dashboard/static/css/main.168ade70.css.map",
-    "main.fa89a7a3.js.map": "/tastetrekker_dashboard/static/js/main.fa89a7a3.js.map",
+    "main.b88b8895.js.map": "/tastetrekker_dashboard/static/js/main.b88b8895.js.map",
     "593.07865d41.chunk.css.map": "/tastetrekker_dashboard/static/css/593.07865d41.chunk.css.map",
     "593.833504fe.chunk.js.map": "/tastetrekker_dashboard/static/js/593.833504fe.chunk.js.map",
     "940.0332b75f.chunk.css.map": "/tastetrekker_dashboard/static/css/940.0332b75f.chunk.css.map",
     "940.fbaa7445.chunk.js.map": "/tastetrekker_dashboard/static/js/940.fbaa7445.chunk.js.map",
-    "9.01c83e66.chunk.js.map": "/tastetrekker_dashboard/static/js/9.01c83e66.chunk.js.map",
+    "9.d5269bf2.chunk.js.map": "/tastetrekker_dashboard/static/js/9.d5269bf2.chunk.js.map",
     "1.b34b5739.chunk.js.map": "/tastetrekker_dashboard/static/js/1.b34b5739.chunk.js.map",
     "188.93dc74ca.chunk.js.map": "/tastetrekker_dashboard/static/js/188.93dc74ca.chunk.js.map",
     "299.cd1daa9e.chunk.js.map": "/tastetrekker_dashboard/static/js/299.cd1daa9e.chunk.js.map",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.168ade70.css",
-    "static/js/main.fa89a7a3.js"
+    "static/js/main.b88b8895.js"
   ]
 }

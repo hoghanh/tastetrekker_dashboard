@@ -17,7 +17,7 @@ import avatar8 from './../../assets/images/avatars/8.jpg'
 const AppHeaderDropdown = () => {
   const logout = () => {
     localStorage.clear()
-    window.location.href = '/login'
+    window.location.href = 'tastetrekker_dashboard/#/login'
   }
   return (
     <CDropdown variant="nav-item">

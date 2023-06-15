@@ -14,7 +14,7 @@ const AddProduct = React.lazy(() => import('./views/pages/product/AddProduct'))
 const UpdateProduct = React.lazy(() => import('./views/pages/product/UpdateProduct'))
 
 const routes = [
-  { path: '/', name: 'Bảng điều khiển', element: Dashboard, exact: true },
+  { path: '/dashboard', name: 'Bảng điều khiển', element: Dashboard, exact: true },
   { path: '/tracking', name: 'Theo dõi', element: Tracking, exact: true },
   { path: '/category', name: 'Phân loại', element: Category, exact: true },
   {

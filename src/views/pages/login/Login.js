@@ -49,7 +49,7 @@ const Login = () => {
       },
     })
       .then((response) => {
-        window.location.href = '/#/'
+        window.location.href = '/#/dashboard'
       })
       .catch((error) => {
         console.log(error)

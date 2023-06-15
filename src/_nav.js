@@ -5,7 +5,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Bảng điều khiển',
-    to: '/',
+    to: '/dashboard',
   },
   {
     component: CNavItem,

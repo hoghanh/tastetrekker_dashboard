@@ -74,11 +74,36 @@ function Tracking() {
           </CCardHeader>
           <CCardBody>
             <CPagination className="justify-content-center" aria-label="Page navigation example">
-              <CPaginationItem onClick={() => setStatus('all')}>Tất cả</CPaginationItem>
-              <CPaginationItem onClick={() => setStatus('checking')}>Đang chờ</CPaginationItem>
-              <CPaginationItem onClick={() => setStatus('Pending')}>Đang giao</CPaginationItem>
-              <CPaginationItem onClick={() => setStatus('done')}>Thành công</CPaginationItem>
-              <CPaginationItem onClick={() => setStatus('cancel')}>Đã huỷ</CPaginationItem>
+              <CPaginationItem
+                className={status === 'all' ? 'active' : ''}
+                onClick={() => setStatus('all')}
+              >
+                Tất cả
+              </CPaginationItem>
+              <CPaginationItem
+                className={status === 'checking' ? 'active' : ''}
+                onClick={() => setStatus('checking')}
+              >
+                Đang chờ
+              </CPaginationItem>
+              <CPaginationItem
+                className={status === 'Pending' ? 'active' : ''}
+                onClick={() => setStatus('Pending')}
+              >
+                Đang giao
+              </CPaginationItem>
+              <CPaginationItem
+                className={status === 'done' ? 'active' : ''}
+                onClick={() => setStatus('done')}
+              >
+                Thành công
+              </CPaginationItem>
+              <CPaginationItem
+                className={status === 'cancel' ? 'active' : ''}
+                onClick={() => setStatus('cancel')}
+              >
+                Đã huỷ
+              </CPaginationItem>
             </CPagination>
             {orders?.map((order) =>
               status !== 'all'
@@ -158,6 +183,13 @@ function Tracking() {
                     <CCard key={order.orderid} style={{ width: '100', margin: '20px' }}>
                       <CCardBody>
                         <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
+                        <CCardText>
+                          <b>Khách hàng:</b> {order.Customer.name} - {order.Customer.email} -{' '}
+                          {order.Customer.phone}
+                        </CCardText>
+                        <CCardText>
+                          <b>Địa chỉ nhận hàng:</b> {order.Customer.address}
+                        </CCardText>
                         <CCardText>
                           <CTable striped>
                             <CTableHead>

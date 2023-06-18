@@ -112,6 +112,13 @@ function Tracking() {
                       <CCardBody>
                         <CCardTitle>Đơn hàng: {order.orderid}</CCardTitle>
                         <CCardText>
+                          <b>Khách hàng:</b> {order.Customer.name} - {order.Customer.email} -{' '}
+                          {order.Customer.phone}
+                        </CCardText>
+                        <CCardText>
+                          <b>Địa chỉ nhận hàng:</b> {order.Customer.address}
+                        </CCardText>
+                        <CCardText>
                           <CTable striped>
                             <CTableHead>
                               <CTableRow>

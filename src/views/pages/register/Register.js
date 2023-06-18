@@ -51,7 +51,7 @@ function Register() {
     })
       .then((response) => {
         alert('Đăng ký thành công')
-        window.location.href = 'https://hoghanh.github.io/tastetrekker_dashboard/#/dashboard'
+        window.location.href = '/tastetrekker_dashboard/#/dashboard'
       })
       .catch((error) => {
         console.log(error)

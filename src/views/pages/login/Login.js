@@ -49,7 +49,7 @@ const Login = () => {
       },
     })
       .then((response) => {
-        window.location.href = '/#/dashboard'
+        window.location.href = '/tastetrekker_dashboard/#/dashboard'
       })
       .catch((error) => {
         console.log(error)
